@@ -12,6 +12,10 @@ app.use(express.json());
 
 app.get('/person', logger, validator);
 
+app.use(errorHandler404);
+
+app.use(errorHandler500);
+
 module.exports = {
   app: app,
   start: function(port) {

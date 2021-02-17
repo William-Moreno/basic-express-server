@@ -10,11 +10,19 @@ const validator = require('./middleware/validator.js');
 
 app.use(express.json());
 
-app.get('/person', logger, validator);
+app.get('/person', logger, validator, displayPersonName);
 
-app.use(errorHandler404);
+app.use('*', errorHandler404);
 
 app.use(errorHandler500);
+
+function displayPersonName(request, response, next) {
+  const person = {
+    name: request.query.name,
+  };
+
+  response.status(200).json(person);
+}
 
 module.exports = {
   app: app,

@@ -2,11 +2,8 @@
 
 module.exports = function(err, request, response, next) {
 
-  const error = err.message ? err.message : err;
-  const errorObject = {
+  response.status(500).send({
     status: 500,
-    message: error,
-  };
-
-  response.status(errorObject.status).json(errorObject);
+    error: 'Server Error',
+  });
 };

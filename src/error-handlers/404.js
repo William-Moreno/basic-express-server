@@ -2,11 +2,8 @@
 
 module.exports = function(err, request, response, next) {
 
-  const error = err.message ? err.message : err;
-  const errorObject = {
+  response.status(404).send({
     status: 404,
-    message: error,
-  };
-
-  response.status(errorObject.status).json(errorObject);
+    error: 'Not found',
+  });
 };

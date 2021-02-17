@@ -12,8 +12,8 @@ app.use(express.json());
 
 app.get('/person', logger, validator, displayPersonName);
 
-app.use('*', errorHandler404);
 
+app.use('*', errorHandler404);
 app.use(errorHandler500);
 
 function displayPersonName(request, response, next) {
@@ -21,7 +21,7 @@ function displayPersonName(request, response, next) {
     name: request.query.name,
   };
 
-  response.status(200).json(person);
+  response.json(person);
 }
 
 module.exports = {

@@ -10,6 +10,7 @@ const validator = require('./middleware/validator.js');
 
 app.use(express.json());
 
+app.get('/person', logger, validator);
 
 module.exports = {
   app: app,
